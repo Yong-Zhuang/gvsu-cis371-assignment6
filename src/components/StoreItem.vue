@@ -128,7 +128,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, Ref, onMounted, onUnmounted } from "vue";
 import { ProductDoc } from "../data-types";
 import {
   deleteProductByID,
@@ -140,7 +140,7 @@ const isModify = ref(false);
 const deleted = ref(false);
 const { item } = defineProps<{ item: ProductDoc }>();
 
-const product = ref(item);
+const product: Ref<ProductDoc> = ref(item);
 
 function deleteItem() {
   if (confirm("Do you want to delete this item?")) {
@@ -165,7 +165,6 @@ function getStarType(index: number, rating: number) {
 }
 
 let unsubscribe: () => void;
-
 // prettier-ignore
 onMounted(
 // write your code here.
